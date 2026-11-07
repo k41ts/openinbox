@@ -7,20 +7,20 @@ type Variant = 'primary' | 'secondary' | 'ghost' | 'danger' | 'outline' | 'link'
 type Size = 'xs' | 'sm' | 'md' | 'lg' | 'icon';
 
 const variants: Record<Variant, string> = {
-  primary: 'bg-primary text-primary-fg hover:bg-primary-hover shadow-[var(--shadow),inset_0_1px_0_rgb(255_255_255/0.12)]',
-  secondary: 'bg-surface text-fg border border-border shadow-card hover:bg-surface-2',
-  outline: 'bg-surface text-fg border border-border hover:bg-surface-2',
+  primary: 'bg-primary text-primary-fg hover:bg-primary-hover shadow-[inset_0_1px_0_rgb(255_255_255/0.22)]',
+  secondary: 'bg-surface text-fg border border-border hover:bg-surface-3',
+  outline: 'bg-transparent text-fg border border-border-strong hover:bg-surface-2',
   ghost: 'text-muted hover:text-fg hover:bg-surface-2',
-  danger: 'bg-danger text-white hover:opacity-90 shadow-card',
+  danger: 'bg-danger text-white hover:opacity-90',
   link: 'text-primary-text hover:underline px-0 h-auto',
 };
 
 const sizes: Record<Size, string> = {
-  xs: 'h-7 px-2.5 text-[12.5px] gap-1.5 rounded-[7px] [&>svg]:h-3.5 [&>svg]:w-3.5',
-  sm: 'h-8 px-3 text-[13px] gap-1.5 rounded-lg',
-  md: 'h-[34px] px-3.5 text-[13px] gap-2 rounded-lg',
-  lg: 'h-10 px-4 text-sm gap-2 rounded-[9px]',
-  icon: 'h-[30px] w-[30px] rounded-[7px] justify-center',
+  xs: 'h-7 px-3 text-[12.5px] gap-1.5 rounded-full [&>svg]:h-3.5 [&>svg]:w-3.5',
+  sm: 'h-8 px-3.5 text-[13px] gap-1.5 rounded-full',
+  md: 'h-[34px] px-4 text-[13px] gap-2 rounded-full',
+  lg: 'h-10 px-5 text-sm gap-2 rounded-full',
+  icon: 'h-[30px] w-[30px] rounded-full justify-center',
 };
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

@@ -62,7 +62,7 @@ export function Tooltip({ content, shortcut, rich, children }: { content: ReactN
             style={{ left: Math.min(Math.max(rect.left + rect.width / 2, 120), window.innerWidth - 120), ...(below ? { top: rect.bottom + 6 } : { bottom: window.innerHeight - rect.top + 6 }) }}
           >
             {content}
-            {shortcut && <span className="inline-flex h-4 min-w-4 items-center justify-center rounded bg-bg/20 px-1 font-mono text-[10.5px] leading-none">{shortcut}</span>}
+            {shortcut && <span className="inline-flex h-4 min-w-4 items-center justify-center rounded bg-[rgb(255_255_255/0.2)] px-1 dark:bg-[rgb(0_0_0/0.18)] font-mono text-[10.5px] leading-none">{shortcut}</span>}
           </div>,
           document.body,
         )}

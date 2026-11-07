@@ -29,7 +29,7 @@ export function IntegrationsPage() {
   );
 }
 
-const PROVIDER_ACCENT: Record<ProviderType, string> = { resend: '#111111', brevo: '#0b996e', mailjet: '#fea500', cloudflare: '#f6821f', smtp: '#6366f1' };
+const PROVIDER_ACCENT: Record<ProviderType, string> = { resend: '#111111', brevo: '#0b996e', mailjet: '#fea500', cloudflare: '#f6821f', smtp: '#5b6578' };
 
 function ProviderMark({ type, size = 38 }: { type: ProviderType; size?: number }) {
   const letter = { resend: 'R', brevo: 'B', mailjet: 'M', cloudflare: 'C', smtp: '@' }[type];

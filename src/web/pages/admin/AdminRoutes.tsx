@@ -29,10 +29,10 @@ function AdminLayout() {
   const { data: o } = useOverview();
   const problems = o ? o.problems.unparsed + o.problems.failed + o.problems.domainErrors + o.problems.providerErrors : 0;
   return (
-    <div className="flex h-full min-h-0 flex-col md:flex-row">
-      <aside className="flex shrink-0 flex-col border-b border-border md:w-[232px] md:border-r md:border-b-0">
+    <div className="flex h-full min-h-0 flex-col md:flex-row md:gap-2">
+      <aside className="glass-side flex shrink-0 flex-col max-md:border-b max-md:border-border md:w-[224px] md:rounded-[16px]">
         <nav className="scroll-thin flex gap-px overflow-x-auto p-2 md:flex-col md:px-2.5 md:py-3.5">
-          <div className="hidden h-[26px] items-center px-2.5 text-[11.5px] font-medium text-faint md:flex">Admin</div>
+          <div className="hidden h-[26px] items-center px-2.5 text-[12.5px] font-medium text-faint md:flex">Admin</div>
           {items.map(({ to, label, Icon, end }) => (
             <NavLink
               key={to}
@@ -40,8 +40,8 @@ function AdminLayout() {
               end={end}
               className={({ isActive }) =>
                 cn(
-                  'flex h-8 shrink-0 items-center gap-2.5 rounded-[7px] px-2.5 text-[13px] transition-colors',
-                  isActive ? 'bg-primary-soft font-semibold text-primary-text [&>svg]:text-primary-text' : 'text-muted hover:bg-surface-2 hover:text-fg [&>svg]:text-faint',
+                  'flex h-8 shrink-0 items-center gap-2.5 rounded-[9px] px-2.5 text-[13px] transition-colors',
+                  isActive ? 'bg-surface-3 font-medium text-fg [&>svg]:text-fg' : 'text-muted hover:bg-surface-2 hover:text-fg [&>svg]:text-faint',
                 )
               }
             >
@@ -51,7 +51,7 @@ function AdminLayout() {
             </NavLink>
           ))}
         </nav>
-        <div className="mx-2.5 mt-auto mb-3.5 hidden flex-col gap-0.5 rounded-[10px] border border-border bg-surface p-2.5 text-xs text-muted md:flex">
+        <div className="mx-2.5 mt-auto mb-3.5 hidden flex-col gap-0.5 rounded-[12px] bg-surface-2 p-2.5 text-xs text-muted md:flex">
           {o && (
             <span className="flex items-center gap-1.5 font-medium text-fg">
               <span className={cn('h-[7px] w-[7px] rounded-full', problems ? 'bg-warning' : 'bg-success')} />
@@ -63,9 +63,11 @@ function AdminLayout() {
           </span>
         </div>
       </aside>
-      <div className="scroll-thin min-h-0 flex-1 overflow-y-auto">
-        <div className="mx-auto max-w-[1080px] px-4 pt-6 pb-12 sm:px-8 lg:px-12 lg:pt-8">
-          <Outlet />
+      <div className="glass min-h-0 flex-1 md:overflow-hidden md:rounded-[16px]">
+        <div className="scroll-thin h-full overflow-y-auto">
+          <div className="mx-auto max-w-[1080px] px-4 pt-6 pb-12 sm:px-8 lg:px-12 lg:pt-8">
+            <Outlet />
+          </div>
         </div>
       </div>
     </div>

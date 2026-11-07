@@ -345,18 +345,18 @@ function MailApp() {
       : undefined;
 
   return (
-    <div className="flex h-full min-h-0">
+    <div className="flex h-full min-h-0 md:gap-2">
       {/* Sidebar: drawer on mobile */}
       <div className={cn('fixed inset-0 z-30 bg-scrim md:hidden', drawer ? 'block animate-fade-in' : 'hidden')} onClick={() => setDrawer(false)} />
       <aside
         className={cn(
-          'fixed inset-y-0 left-0 z-40 w-[304px] bg-bg shadow-pop transition-transform md:static md:z-auto md:w-64 md:translate-x-0 md:border-r md:border-border md:shadow-none',
+          'glass-side mail-drawer fixed inset-y-0 left-0 z-40 w-[304px] transition-transform md:static md:z-auto md:w-60 md:translate-x-0 md:rounded-[16px]',
           drawer ? 'translate-x-0' : '-translate-x-full',
         )}
       >
         <MailSidebar mailboxes={mailboxes} current={mailboxParam} view={view} onCompose={() => { setDrawer(false); openCompose(); }} onNavigate={() => setDrawer(false)} onClose={() => setDrawer(false)} />
       </aside>
-      <section className={cn('relative min-h-0 w-full flex-col border-border md:flex md:w-[380px] md:shrink-0 md:border-r lg:w-[400px]', threadId ? 'hidden' : 'flex')}>
+      <section className={cn('min-h-0 w-full flex-col md:flex md:w-[372px] md:shrink-0 md:overflow-hidden md:rounded-[16px] glass lg:w-[392px]', threadId ? 'hidden' : 'flex')}>
         <ThreadList
           mailbox={mailboxParam}
           view={view}
@@ -374,7 +374,7 @@ function MailApp() {
           searchRef={searchRef}
         />
       </section>
-      <section className={cn('min-h-0 min-w-0 flex-1', threadId ? 'block' : 'hidden md:block')}>
+      <section className={cn('min-h-0 min-w-0 flex-1 md:overflow-hidden md:rounded-[16px] glass-read', threadId ? 'block' : 'hidden md:block')}>
         {threadId ? (
           <ThreadView
             key={threadId}
@@ -388,7 +388,7 @@ function MailApp() {
           />
         ) : (
           <div className="flex h-full flex-col items-center justify-center pb-10 text-center">
-            <div className="mb-[18px] grid h-[52px] w-[52px] place-items-center rounded-[15px] border border-border bg-surface text-faint shadow-card">
+            <div className="mb-[18px] grid h-[52px] w-[52px] place-items-center rounded-[15px] bg-surface-2 text-faint">
               <Inbox className="h-[22px] w-[22px]" />
             </div>
             <div className="text-[15px] font-semibold">Select a conversation</div>

@@ -8,7 +8,7 @@ import type { Session } from '../../lib/types';
 import { useTheme, type Theme } from '../../lib/theme';
 import { cn } from '../../lib/utils';
 import { CommandPalette, KeyCombo, SHORTCUTS } from '../../pages/mail/CommandPalette';
-import { LogoMark } from '../Logo';
+import { Monogram } from '../Logo';
 import { Dialog, Menu, MenuItem, MenuLabel, MenuSeparator, useToast } from '../ui/overlay';
 import { Avatar, Kbd } from '../ui/misc';
 
@@ -61,8 +61,8 @@ export function AppShell() {
       to={to}
       className={({ isActive }) =>
         cn(
-          'flex h-7 items-center gap-[7px] rounded-[7px] px-2.5 text-[13px] font-medium transition-colors [&>svg]:h-[15px] [&>svg]:w-[15px]',
-          isActive ? 'bg-surface-2 text-fg [&>svg]:text-muted' : 'text-muted hover:text-fg',
+          'flex h-7 items-center gap-[7px] rounded-full px-3 text-[13px] font-medium transition-colors [&>svg]:h-[15px] [&>svg]:w-[15px]',
+          isActive ? 'bg-surface-3 text-fg [&>svg]:text-fg' : 'text-muted hover:bg-surface-2 hover:text-fg',
         )
       }
     >
@@ -78,10 +78,10 @@ export function AppShell() {
   ];
 
   return (
-    <div className="flex h-full flex-col">
-      <header className="flex h-12 shrink-0 items-center gap-3 border-b border-border bg-bg pr-3 pl-3.5 sm:gap-5">
+    <div className="flex h-full flex-col md:gap-2 md:p-2">
+      <header className="glass z-20 flex h-12 shrink-0 items-center gap-3 pr-2.5 pl-3 sm:gap-5 md:rounded-[16px]">
         <NavLink to="/" className="flex items-center gap-[9px] md:w-[230px]">
-          <LogoMark size={22} />
+          <Monogram size={24} name={session?.instanceName} />
           <span className="hidden truncate text-sm font-semibold tracking-[-0.01em] md:inline">{session?.instanceName ?? 'OpenInbox'}</span>
         </NavLink>
         <nav className="flex items-center gap-0.5">
@@ -92,7 +92,7 @@ export function AppShell() {
         <button
           type="button"
           onClick={() => setPalette(true)}
-          className="hidden h-[30px] w-60 items-center gap-2 rounded-lg border border-border bg-surface pr-1.5 pl-2.5 text-[12.5px] text-faint transition-colors hover:border-border-strong hover:text-muted sm:flex"
+          className="hidden h-[30px] w-60 items-center gap-2 rounded-full border border-border bg-surface pr-1.5 pl-2.5 text-[12.5px] text-faint transition-colors hover:border-border-strong hover:text-muted sm:flex"
         >
           <Command className="h-3.5 w-3.5" />
           <span className="flex-1 text-left">Jump to…</span>
@@ -101,7 +101,7 @@ export function AppShell() {
         <Menu
           className="w-[264px]"
           trigger={({ onClick, open }) => (
-            <button type="button" onClick={onClick} className={cn('rounded-full transition-shadow', open && 'ring-2 ring-[var(--ring)] ring-offset-2 ring-offset-bg')} aria-label="Account menu">
+            <button type="button" onClick={onClick} className={cn('rounded-full transition-shadow', open && 'ring-2 ring-[var(--ring)] ring-offset-2 ring-offset-transparent')} aria-label="Account menu">
               <Avatar name={user?.name ?? ''} address={user?.email ?? ''} size={30} />
             </button>
           )}

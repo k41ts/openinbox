@@ -5,64 +5,93 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* Design tokens. Components use these through the Tailwind theme below, so light and dark
-   themes are just two sets of variables. */
+   themes are just two sets of variables.
+
+   Liquid glass: the app sits on a wallpaper (--wall-*), the structural panes are frosted glass
+   (--pane*, see "Glass materials" below), and everything inside a pane is a tint on that glass:
+   --surface and friends are translucent, never blurred again, so glass never stacks on glass. */
 :root {
-  --bg: #f6f6f8;
-  --surface: #ffffff;
-  --surface-2: #f1f1f4;
-  --surface-3: #e8e8ed;
-  --border: #e5e5ea;
-  --border-strong: #d2d2da;
-  --text: #16161d;
-  --text-muted: #5b5b68;
-  --text-faint: #8a8a97;
-  --primary: #4f46e5;
-  --primary-hover: #4338ca;
-  --primary-soft: #eef0ff;
+  --bg: transparent;
+  --surface: rgb(255 255 255 / 0.62);
+  --surface-2: rgb(28 36 64 / 0.055);
+  --surface-3: rgb(28 36 64 / 0.1);
+  --border: rgb(28 36 64 / 0.09);
+  --border-strong: rgb(28 36 64 / 0.17);
+  --text: #121624;
+  --text-muted: #4c5468;
+  --text-faint: #7a8296;
+  --primary: #0a6bdb;
+  --primary-hover: #0859b8;
+  --primary-soft: rgb(10 107 219 / 0.12);
   --primary-fg: #ffffff;
   /* Primary as text on soft backgrounds (active nav, links). */
-  --primary-text: #4338ca;
-  --danger: #d92d20;
-  --danger-soft: #fdeceb;
-  --success: #137a3f;
-  --success-soft: #e6f5ec;
-  --warning: #b25a06;
-  --warning-soft: #fdf3e2;
-  --ring: rgb(79 70 229 / 0.42);
-  --scrim: rgb(22 22 29 / 0.28);
+  --primary-text: #0857b3;
+  --danger: #d4291c;
+  --danger-soft: rgb(212 41 28 / 0.11);
+  --success: #12773d;
+  --success-soft: rgb(18 119 61 / 0.12);
+  --warning: #a95503;
+  --warning-soft: rgb(214 120 10 / 0.14);
+  --ring: rgb(10 107 219 / 0.4);
+  --scrim: rgb(14 18 32 / 0.22);
   /* Background behind mail bodies, which are written for white. */
   --reading: #ffffff;
-  --shadow: 0 1px 2px rgb(16 16 24 / 0.05), 0 1px 3px rgb(16 16 24 / 0.06);
-  --shadow-lg: 0 16px 40px -12px rgb(16 16 24 / 0.22), 0 4px 12px -4px rgb(16 16 24 / 0.1), 0 0 0 1px rgb(16 16 24 / 0.04);
+  --shadow: none;
+  --shadow-lg: 0 24px 60px -18px rgb(14 20 40 / 0.35), 0 6px 18px -8px rgb(14 20 40 / 0.18);
+
+  /* Wallpaper behind the glass: a cool morning sky with one warm field. */
+  --wall: #dfe6f1;
+  --wall-a: #8db7ff;
+  --wall-b: #ffbc9e;
+  --wall-c: #8bdcd2;
+  /* Glass: panes (structure), the sidebar (heavier), floating layers (menus, dialogs). */
+  --pane: rgb(250 251 255 / 0.58);
+  --pane-side: rgb(236 240 249 / 0.52);
+  --pane-read: rgb(255 255 255 / 0.82);
+  --float: rgb(250 251 255 / 0.78);
+  --glass-edge: rgb(255 255 255 / 0.75);
+  --glass-shade: rgb(14 20 40 / 0.07);
+  --glass-blur: 30px;
   color-scheme: light;
 }
 
 .dark {
-  --bg: #0d0d11;
-  --surface: #15151b;
-  --surface-2: #1c1c24;
-  --surface-3: #25252e;
-  --border: #25252e;
-  --border-strong: #363641;
-  --text: #ededf2;
-  --text-muted: #a1a1ae;
-  --text-faint: #6e6e7c;
-  --primary: #7c74ff;
-  --primary-hover: #918aff;
-  --primary-soft: #221f47;
+  --bg: transparent;
+  --surface: rgb(255 255 255 / 0.055);
+  --surface-2: rgb(255 255 255 / 0.065);
+  --surface-3: rgb(255 255 255 / 0.11);
+  --border: rgb(255 255 255 / 0.08);
+  --border-strong: rgb(255 255 255 / 0.15);
+  --text: #eef1f8;
+  --text-muted: #a9b1c4;
+  --text-faint: #737c92;
+  --primary: #3d8bff;
+  --primary-hover: #5c9eff;
+  --primary-soft: rgb(61 139 255 / 0.18);
   --primary-fg: #ffffff;
-  --primary-text: #b3aeff;
-  --danger: #f87171;
-  --danger-soft: #351719;
-  --success: #4ade80;
-  --success-soft: #10301c;
-  --warning: #fbbf24;
-  --warning-soft: #32260e;
-  --ring: rgb(124 116 255 / 0.5);
-  --scrim: rgb(0 0 0 / 0.55);
-  --reading: #18181f;
-  --shadow: 0 1px 2px rgb(0 0 0 / 0.4);
-  --shadow-lg: 0 20px 48px -12px rgb(0 0 0 / 0.7), 0 0 0 1px rgb(255 255 255 / 0.06);
+  --primary-text: #8dbbff;
+  --danger: #ff7a6e;
+  --danger-soft: rgb(255 122 110 / 0.15);
+  --success: #4fd88a;
+  --success-soft: rgb(79 216 138 / 0.14);
+  --warning: #ffc04d;
+  --warning-soft: rgb(255 192 77 / 0.14);
+  --ring: rgb(61 139 255 / 0.5);
+  --scrim: rgb(0 0 0 / 0.45);
+  --reading: #151a26;
+  --shadow: none;
+  --shadow-lg: 0 28px 70px -20px rgb(0 0 0 / 0.75), 0 8px 22px -10px rgb(0 0 0 / 0.5);
+
+  --wall: #070a12;
+  --wall-a: #1b4fa8;
+  --wall-b: #7a2f4a;
+  --wall-c: #0d6b6a;
+  --pane: rgb(22 27 40 / 0.55);
+  --pane-side: rgb(12 15 24 / 0.5);
+  --pane-read: rgb(18 23 34 / 0.8);
+  --float: rgb(26 31 46 / 0.78);
+  --glass-edge: rgb(255 255 255 / 0.14);
+  --glass-shade: rgb(0 0 0 / 0.3);
   color-scheme: dark;
 }
 
@@ -122,7 +151,7 @@ body,
 }
 
 body {
-  background: var(--bg);
+  background: var(--wall);
   color: var(--text);
   font-family: var(--font-sans);
   font-size: 14px;
@@ -269,4 +298,193 @@ body {
   background-repeat: no-repeat;
   background-position: right 10px center;
   background-size: 14px;
+}
+
+/* ---------------------------------------------------------------------------------------------
+   Glass materials
+   One wallpaper, three weights of glass. Panes (structure) blur what is behind them; whatever
+   sits inside a pane is a translucent tint, never another blur. Floating layers (menus,
+   dialogs, the composer, toasts) are the most opaque glass, so text over moving mail stays sharp.
+   --------------------------------------------------------------------------------------------- */
+
+/* The wallpaper: three soft fields of colour, fixed behind everything. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60vmax 50vmax at 8% 4%, var(--wall-a), transparent 62%),
+    radial-gradient(55vmax 48vmax at 96% 92%, var(--wall-b), transparent 60%),
+    radial-gradient(40vmax 36vmax at 62% 38%, var(--wall-c), transparent 64%),
+    var(--wall);
+}
+
+.glass,
+.glass-side,
+.glass-read,
+.shadow-pop {
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(175%);
+  backdrop-filter: blur(var(--glass-blur)) saturate(175%);
+  border-color: transparent;
+}
+.glass,
+.glass-read {
+  position: relative;
+}
+.glass {
+  background-color: var(--pane);
+  box-shadow:
+    inset 0 1px 0 var(--glass-edge),
+    inset 0 0 0 1px var(--glass-shade),
+    0 10px 30px -18px rgb(14 20 40 / 0.35);
+}
+.glass-side {
+  background-color: var(--pane-side);
+  box-shadow:
+    inset 0 1px 0 var(--glass-edge),
+    inset 0 0 0 1px var(--glass-shade);
+}
+.glass-read {
+  background-color: var(--pane-read);
+  box-shadow:
+    inset 0 1px 0 var(--glass-edge),
+    inset 0 0 0 1px var(--glass-shade),
+    0 14px 40px -22px rgb(14 20 40 / 0.4);
+}
+/* Floating layers keep their Tailwind classes (bg-surface shadow-pop); this turns them to glass. */
+.shadow-pop {
+  background-color: var(--float);
+  box-shadow:
+    inset 0 1px 0 var(--glass-edge),
+    inset 0 0 0 1px var(--glass-shade),
+    var(--shadow-lg);
+}
+
+/* The liquid edge: light catching the top-left rim of a pane, fading out along the sides. */
+.glass::after,
+.glass-read::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  pointer-events: none;
+  background: linear-gradient(150deg, rgb(255 255 255 / 0.9), rgb(255 255 255 / 0) 34%, rgb(255 255 255 / 0) 72%, rgb(255 255 255 / 0.35));
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+  opacity: 0.55;
+}
+.dark .glass::after,
+.dark .glass-read::after {
+  opacity: 0.22;
+}
+
+/* Glass grows as it arrives: blur and scale together, not a bare fade. */
+@keyframes glass-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+    -webkit-backdrop-filter: blur(0) saturate(100%);
+    backdrop-filter: blur(0) saturate(100%);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.shadow-pop.animate-pop-in {
+  animation: glass-in 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Press feedback on every button, on pointer-down. */
+button:not(:disabled):active,
+a[href]:active {
+  transform: scale(0.975);
+  transition: transform 90ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shadow-pop.animate-pop-in {
+    animation: fade-in 0.15s ease-out;
+  }
+  button:not(:disabled):active,
+  a[href]:active {
+    transform: none;
+  }
+}
+
+/* People who ask for less transparency get solid panes with a defined edge. */
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --pane: #f4f6fb;
+    --pane-side: #eceff6;
+    --pane-read: #ffffff;
+    --float: #ffffff;
+    --surface: #ffffff;
+  }
+  .dark {
+    --pane: #161b27;
+    --pane-side: #10141d;
+    --pane-read: #151a26;
+    --float: #1c2231;
+    --surface: #1c2231;
+  }
+  .glass,
+  .glass-side,
+  .glass-read,
+  .shadow-pop {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+@media (prefers-contrast: more) {
+  .glass,
+  .glass-side,
+  .glass-read,
+  .shadow-pop {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    box-shadow: inset 0 0 0 1px var(--border-strong);
+  }
+  :root {
+    --pane: #f4f6fb;
+    --pane-side: #eceff6;
+    --pane-read: #ffffff;
+    --float: #ffffff;
+  }
+  .dark {
+    --pane: #161b27;
+    --pane-side: #10141d;
+    --pane-read: #151a26;
+    --float: #1c2231;
+  }
+}
+
+/* The mail sidebar is a drawer on phones: it floats over the list, so it takes floating glass. */
+@media (max-width: 767px) {
+  .mail-drawer {
+    background-color: var(--float);
+    box-shadow:
+      inset 0 1px 0 var(--glass-edge),
+      var(--shadow-lg);
+  }
+}
+
+/* A card straight on the wallpaper (setup) has no pane under it, so it becomes glass itself. */
+.card:not(:where(.glass, .glass-read, .glass-side, .shadow-pop) *) {
+  background-color: var(--pane-read);
+  border-color: transparent;
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(175%);
+  backdrop-filter: blur(var(--glass-blur)) saturate(175%);
+  box-shadow:
+    inset 0 1px 0 var(--glass-edge),
+    inset 0 0 0 1px var(--glass-shade),
+    0 14px 40px -22px rgb(14 20 40 / 0.4);
 }

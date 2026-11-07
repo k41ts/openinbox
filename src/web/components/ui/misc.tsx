@@ -16,7 +16,7 @@ export function PageSpinner() {
 }
 
 export function Card({ className, children }: { className?: string; children: ReactNode }) {
-  return <div className={cn('rounded-xl border border-border bg-surface shadow-card', className)}>{children}</div>;
+  return <div className={cn('card rounded-[14px] border border-border bg-surface', className)}>{children}</div>;
 }
 
 export function CardHeader({ title, description, action, icon }: { title: ReactNode; description?: ReactNode; action?: ReactNode; icon?: ReactNode }) {

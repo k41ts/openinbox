@@ -23,3 +23,10 @@ docs/creds.txt
 # Local-only notes and agent instructions (not published)
 .notes/
 CLAUDE.md
+
+# Claude
+.claude/
+claude/
+CLAUDE.local.md
+graphify-out/
+.taste-skill/

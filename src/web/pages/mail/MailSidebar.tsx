@@ -4,7 +4,7 @@ import { AlarmClock, Archive, AtSign, CalendarClock, ChevronDown, FileText, Inbo
 import { cn, storageGet, storageSet } from '../../lib/utils';
 import { useSession } from '../../lib/session';
 import type { Mailbox } from '../../lib/types';
-import { LogoMark } from '../../components/Logo';
+import { Monogram } from '../../components/Logo';
 import { Avatar } from '../../components/ui/misc';
 import { labelDot } from './labels';
 
@@ -106,7 +106,7 @@ export function MailSidebar({
         key={`${mailbox}-${v}`}
         to={`/mail/${mailbox}/${v}`}
         onClick={onNavigate}
-        className={cn(row, active ? 'bg-primary-soft font-semibold text-primary-text' : strong ? 'font-semibold text-fg hover:bg-surface-2' : 'text-muted hover:bg-surface-2 hover:text-fg')}
+        className={cn(row, active ? 'bg-surface-3 font-semibold text-fg' : strong ? 'font-semibold text-fg hover:bg-surface-2' : 'text-muted hover:bg-surface-2 hover:text-fg')}
       >
         <Icon className={cn('h-[18px] w-[18px] shrink-0 md:h-[15px] md:w-[15px]', active ? 'text-primary-text' : 'text-faint')} />
         <span className="truncate">{label}</span>
@@ -133,7 +133,7 @@ export function MailSidebar({
               key={l.id}
               to={`/mail/${base}/label-${l.id}`}
               onClick={onNavigate}
-              className={cn(row, current === base && view === `label-${l.id}` ? 'bg-primary-soft font-semibold text-primary-text' : 'text-muted hover:bg-surface-2 hover:text-fg')}
+              className={cn(row, current === base && view === `label-${l.id}` ? 'bg-surface-3 font-semibold text-fg' : 'text-muted hover:bg-surface-2 hover:text-fg')}
             >
               <span className="grid w-[18px] shrink-0 place-items-center md:w-[15px]">
                 <span className="h-2 w-2 rounded-full" style={labelDot(l.color)} />
@@ -150,7 +150,7 @@ export function MailSidebar({
     <div className="flex h-full flex-col">
       {onClose && (
         <div className="flex items-center gap-2.5 px-4 pt-3 pb-2 md:hidden">
-          <LogoMark size={24} />
+          <Monogram size={24} name={session?.instanceName} />
           <span className="flex-1 truncate text-[15px] font-semibold">{session?.instanceName ?? 'OpenInbox'}</span>
           <button type="button" onClick={onClose} className="grid h-9 w-9 place-items-center rounded-lg text-muted hover:bg-surface-2" aria-label="Close menu">
             <X className="h-[18px] w-[18px]" />
@@ -161,11 +161,11 @@ export function MailSidebar({
         <button
           type="button"
           onClick={onCompose}
-          className="flex h-11 w-full items-center gap-[9px] rounded-[10px] bg-primary pr-2.5 pl-3 text-[15px] font-medium text-primary-fg shadow-[var(--shadow),inset_0_1px_0_rgb(255_255_255/0.12)] transition-colors hover:bg-primary-hover md:h-[38px] md:rounded-[9px] md:text-sm"
+          className="flex h-11 w-full items-center gap-[9px] rounded-full bg-primary pr-2 pl-4 text-[15px] font-medium text-primary-fg shadow-[inset_0_1px_0_rgb(255_255_255/0.22)] transition-colors hover:bg-primary-hover md:h-[38px] md:text-sm"
         >
           <SquarePen className="h-4 w-4" />
           <span className="flex-1 text-left">Compose</span>
-          <span className="hidden h-[18px] w-[18px] place-items-center rounded bg-white/15 font-mono text-[11px] leading-none font-medium md:grid">C</span>
+          <span className="hidden h-[18px] w-[18px] place-items-center rounded-full bg-white/20 text-[11px] leading-none font-semibold md:grid">C</span>
         </button>
       </div>
       <nav className="scroll-thin flex min-h-0 flex-1 flex-col gap-1 overflow-y-auto px-2 pt-1 pb-2">

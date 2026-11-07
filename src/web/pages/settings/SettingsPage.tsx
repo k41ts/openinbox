@@ -29,8 +29,8 @@ export default function SettingsPage() {
       to={`/settings/${to}${keep}`}
       className={({ isActive }) =>
         cn(
-          'flex h-8 shrink-0 items-center gap-2.5 rounded-[7px] px-2.5 text-[13px] whitespace-nowrap transition-colors',
-          isActive ? 'bg-primary-soft font-semibold text-primary-text [&>svg]:text-primary-text' : 'text-muted hover:bg-surface-2 hover:text-fg [&>svg]:text-faint',
+          'flex h-8 shrink-0 items-center gap-2.5 rounded-[9px] px-2.5 text-[13px] whitespace-nowrap transition-colors',
+          isActive ? 'bg-surface-3 font-medium text-fg [&>svg]:text-fg' : 'text-muted hover:bg-surface-2 hover:text-fg [&>svg]:text-faint',
         )
       }
     >
@@ -38,10 +38,10 @@ export default function SettingsPage() {
       {label}
     </NavLink>
   );
-  const heading = (label: string, first?: boolean) => <div className={cn('hidden h-[26px] items-center px-2.5 text-[11.5px] font-medium text-faint md:flex', !first && 'md:mt-3')}>{label}</div>;
+  const heading = (label: string, first?: boolean) => <div className={cn('hidden h-[26px] items-center px-2.5 text-[12.5px] font-medium text-faint md:flex', !first && 'md:mt-3')}>{label}</div>;
   return (
-    <div className="flex h-full min-h-0 flex-col md:flex-row">
-      <aside className="shrink-0 border-b border-border md:w-[232px] md:border-r md:border-b-0">
+    <div className="flex h-full min-h-0 flex-col md:flex-row md:gap-2">
+      <aside className="glass-side shrink-0 max-md:border-b max-md:border-border md:w-[224px] md:rounded-[16px]">
         <nav className="scroll-thin flex gap-px overflow-x-auto p-2 md:flex-col md:px-2.5 md:py-3.5">
           {heading('Account', true)}
           {ACCOUNT.map((a) => link(a.to, a.label, a.Icon))}
@@ -49,7 +49,8 @@ export default function SettingsPage() {
           {MAIL_SECTIONS.map((m) => link(m.id, m.label, MAIL_ICONS[m.id], search))}
         </nav>
       </aside>
-      <div className="scroll-thin min-h-0 flex-1 overflow-y-auto">
+      <div className="glass min-h-0 flex-1 md:overflow-hidden md:rounded-[16px]">
+        <div className="scroll-thin h-full overflow-y-auto">
         <div className="mx-auto max-w-3xl px-4 pt-6 pb-12 sm:px-8 lg:pt-8">
           <Routes>
             {ACCOUNT.map((a) => (
@@ -63,6 +64,7 @@ export default function SettingsPage() {
             <Route path="mailboxes/*" element={<Navigate to="/settings/signature" replace />} />
             <Route path="*" element={<Navigate to="/settings/profile" replace />} />
           </Routes>
+        </div>
         </div>
       </div>
     </div>

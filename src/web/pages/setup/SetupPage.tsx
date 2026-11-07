@@ -6,7 +6,7 @@ import { ApiError, errorText, get, post } from '../../lib/api';
 import { cn, downloadBlob } from '../../lib/utils';
 import { ACCOUNT_TOKENS_URL, tokenTemplateUrl, TOKEN_PERMISSIONS } from '../../../shared/constants';
 import type { DomainSetupStep, PermissionCheck, ZoneInspection } from '../../lib/types';
-import { LogoMark } from '../../components/Logo';
+import { Monogram } from '../../components/Logo';
 import { Button } from '../../components/ui/button';
 import { Checkbox, Field, Input, PasswordInput, Select } from '../../components/ui/form';
 import { Alert, Badge, Card, CopyButton } from '../../components/ui/misc';
@@ -78,7 +78,7 @@ export function SetupPage() {
     <div className="min-h-full bg-bg">
       <div className="mx-auto max-w-2xl px-4 py-10 sm:py-14">
         <div className="mb-8 flex flex-col items-center text-center">
-          <LogoMark size={48} />
+          <Monogram size={48} name="OpenInbox" />
           <h1 className="mt-4 text-2xl font-semibold tracking-tight">Welcome to OpenInbox</h1>
           <p className="mt-1.5 max-w-md text-sm text-muted">Your own email on your own domains, running in your Cloudflare account. Setup takes about two minutes.</p>
         </div>
