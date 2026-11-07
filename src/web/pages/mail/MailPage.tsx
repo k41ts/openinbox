@@ -5,6 +5,7 @@ import { Inbox } from 'lucide-react';
 import { api, errorText, post } from '../../lib/api';
 import { fullDate } from '../../lib/format';
 import { cn } from '../../lib/utils';
+import { useSession } from '../../lib/session';
 import { withSignature, Composer, type ComposeState, type SendRequest } from './Composer';
 import { MailSidebar } from './MailSidebar';
 import { ThreadList } from './ThreadList';
@@ -323,13 +324,15 @@ function MailApp() {
   }, [list, focusIndex, selected, threadId, view, base, suffix, mailboxParam, navigate, openCompose, openThread, act, toast]);
 
   // The browser tab shows the unread count.
+  const { data: session } = useSession();
+  const appName = session?.instanceName ?? 'OpenInbox';
   useEffect(() => {
     const unread = (mailboxes ?? []).reduce((n, m) => n + (m.unread.inbox ?? 0), 0);
-    document.title = unread ? `(${unread}) Inbox · OpenInbox` : 'OpenInbox';
+    document.title = unread ? `(${unread}) Inbox · ${appName}` : appName;
     return () => {
-      document.title = 'OpenInbox';
+      document.title = appName;
     };
-  }, [mailboxes]);
+  }, [mailboxes, appName]);
 
   if (isLoading || !mailboxes) return <PageSpinner />;
 
