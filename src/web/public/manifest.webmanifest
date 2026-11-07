@@ -5,7 +5,7 @@
   "start_url": "/mail",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#dfe6f1",
+  "background_color": "#b9cbe0",
   "theme_color": "#0a6bdb",
   "icons": [
     { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" },

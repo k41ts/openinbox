@@ -15,8 +15,8 @@ export function AuthLayout({ title, subtitle, children, footer, wide }: { title:
             {subtitle && <p className="mt-1.5 text-sm text-muted text-pretty">{subtitle}</p>}
           </div>
           {children}
+          {footer && <div className="mt-5 text-center text-[13px] text-muted">{footer}</div>}
         </div>
-        {footer && <div className="mt-5 text-center text-[13px] text-muted">{footer}</div>}
       </div>
     </div>
   );

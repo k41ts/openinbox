@@ -39,14 +39,12 @@
   --shadow: none;
   --shadow-lg: 0 24px 60px -18px rgb(14 20 40 / 0.35), 0 6px 18px -8px rgb(14 20 40 / 0.18);
 
-  /* Wallpaper behind the glass: a cool morning sky with one warm field. */
-  --wall: #dfe6f1;
-  --wall-a: #8db7ff;
-  --wall-b: #ffbc9e;
-  --wall-c: #8bdcd2;
+  /* Wallpaper behind the glass: the photograph, lightly veiled; --wall shows while it loads. */
+  --wall: #b9cbe0;
+  --wall-veil: rgb(236 242 250 / 0.12);
   /* Glass: panes (structure), the sidebar (heavier), floating layers (menus, dialogs). */
-  --pane: rgb(250 251 255 / 0.58);
-  --pane-side: rgb(236 240 249 / 0.52);
+  --pane: rgb(250 251 255 / 0.68);
+  --pane-side: rgb(240 244 251 / 0.7);
   --pane-read: rgb(255 255 255 / 0.82);
   --float: rgb(250 251 255 / 0.78);
   --glass-edge: rgb(255 255 255 / 0.75);
@@ -82,10 +80,8 @@
   --shadow: none;
   --shadow-lg: 0 28px 70px -20px rgb(0 0 0 / 0.75), 0 8px 22px -10px rgb(0 0 0 / 0.5);
 
-  --wall: #070a12;
-  --wall-a: #1b4fa8;
-  --wall-b: #7a2f4a;
-  --wall-c: #0d6b6a;
+  --wall: #0b1220;
+  --wall-veil: rgb(6 10 20 / 0.62);
   --pane: rgb(22 27 40 / 0.55);
   --pane-side: rgb(12 15 24 / 0.5);
   --pane-read: rgb(18 23 34 / 0.8);
@@ -307,7 +303,8 @@ body {
    dialogs, the composer, toasts) are the most opaque glass, so text over moving mail stays sharp.
    --------------------------------------------------------------------------------------------- */
 
-/* The wallpaper: three soft fields of colour, fixed behind everything. */
+/* The wallpaper: Chureito Pagoda and Mt Fuji (CC0, see public/wallpaper-credit.txt), with a veil
+   that keeps the panes readable in each theme. */
 body::before {
   content: '';
   position: fixed;
@@ -315,9 +312,8 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(60vmax 50vmax at 8% 4%, var(--wall-a), transparent 62%),
-    radial-gradient(55vmax 48vmax at 96% 92%, var(--wall-b), transparent 60%),
-    radial-gradient(40vmax 36vmax at 62% 38%, var(--wall-c), transparent 64%),
+    linear-gradient(var(--wall-veil), var(--wall-veil)),
+    image-set(url('/wallpaper.webp') type('image/webp'), url('/wallpaper.jpg') type('image/jpeg')) center 45% / cover no-repeat,
     var(--wall);
 }
 
